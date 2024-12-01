@@ -1,31 +1,41 @@
 services:
-  db:
-    networks:
-      - app-network
-    container_name: db
+  # db:
+  #   networks:
+  #     - app-network
+  #   container_name: db
+  #   ports:
+  #     - "5432:5432"
+  #   image: postgres:16
+  #   environment:
+  #     POSTGRES_DB: ${POSTGRES_DB}
+  #     POSTGRES_USER: ${POSTGRES_USER}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  #   volumes:
+  #     - db_data:/var/lib/postgresql/data
+  # api:
+  #   networks:
+  #     - app-network
+  #   container_name: api
+  #   build:
+  #     context: ./api
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8000:80"
+  #   depends_on:
+  #     - db
+  web:
+    container_name: web
     ports:
-      - "5432:5432"
-    image: postgres:16
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    volumes:
-      - db_data:/var/lib/postgresql/data
-  api:
-    networks:
-      - app-network
-    container_name: api
+      - "8090:80"
     build:
-      context: ./api
+      context: ./web
       dockerfile: Dockerfile
-    ports:
-      - "8000:80"
-    depends_on:
-      - db
-  # web:
+    volumes:
+      - ./web/nodes_modules:/app/nodes_modules
+    # depends_on:
+    #   - db
 volumes:
-  db_data:
+  # db_data:
 networks:
   app-network:
     driver: bridge
