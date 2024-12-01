@@ -15,17 +15,17 @@ services:
       DATABASE_URL: ${DATABASE_URL}
     volumes:
       - db_data:/var/lib/postgresql/data
-  # api:
-  #   networks:
-  #     - app-network
-  #   container_name: api
-  #   build:
-  #     context: ./api
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "8000:80"
-  #   depends_on:
-  #     - db
+  api:
+    networks:
+      - app-network
+    container_name: api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
   web:
     container_name: web
     ports:
@@ -35,8 +35,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./web/nodes_modules:/app/nodes_modules
-    # depends_on:
-    #   - db
+    depends_on:
+      - db
 volumes:
   db_data:
 networks:
