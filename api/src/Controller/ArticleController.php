@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class ArticleController extends AbstractController
 {
-    #[Route('/api/article', name: 'api_get_all_article', methods: ['GET'])]
+    #[Route('/api/article', name: 'api_get_all_articles', methods: ['GET'])]
     public function getAllArticles(ArticleRepository $articleRepository): JsonResponse
     {
         $articles = $articleRepository->findAll();
@@ -94,7 +94,7 @@ class ArticleController extends AbstractController
 
         return new JsonResponse(['status' => 'Article supprimé !'], Response::HTTP_OK);
     }
-    #[Route('/api/article', name: 'api_delete_all_article', methods: ['DELETE'])]
+    #[Route('/api/article', name: 'api_delete_all_articles', methods: ['DELETE'])]
     public function deleteAllArticles(EntityManagerInterface $entityManager, ArticleRepository $articleRepository): JsonResponse
     {
         $articles = $articleRepository->findAll();

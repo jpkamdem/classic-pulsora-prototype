@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class AdminController extends AbstractController
 {
-    #[Route('/api/admin', name: 'api_get_all_admin', methods: ['GET'])]
+    #[Route('/api/admin', name: 'api_get_all_admins', methods: ['GET'])]
     public function getAllAdmins(AdminRepository $adminRepository): JsonResponse
     {
         $admins = $adminRepository->findAll();
@@ -94,7 +94,7 @@ class AdminController extends AbstractController
 
         return new JsonResponse(['status' => 'Admin supprimé !'], Response::HTTP_OK);
     }
-    #[Route('/api/admin', name: 'api_delete_all_admin', methods: ['DELETE'])]
+    #[Route('/api/admin', name: 'api_delete_all_admins', methods: ['DELETE'])]
     public function deleteAllAdmins(EntityManagerInterface $entityManager, AdminRepository $adminRepository): JsonResponse
     {
         $admins = $adminRepository->findAll();
