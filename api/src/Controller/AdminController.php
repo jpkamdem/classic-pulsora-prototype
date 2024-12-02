@@ -95,7 +95,7 @@ class AdminController extends AbstractController
         return new JsonResponse(['status' => 'Admin supprimé !'], Response::HTTP_OK);
     }
     #[Route('/api/admin', name: 'api_delete_all_admin', methods: ['DELETE'])]
-    public function deleteAdmins(EntityManagerInterface $entityManager, AdminRepository $adminRepository): JsonResponse
+    public function deleteAllAdmins(EntityManagerInterface $entityManager, AdminRepository $adminRepository): JsonResponse
     {
         $admins = $adminRepository->findAll();
 
