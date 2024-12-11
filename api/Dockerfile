@@ -1,17 +1,9 @@
-FROM php:8.3-apache
+FROM php:7.4-apache
 
-RUN apt-get update && apt-get install -y libpq-dev curl
+RUN docker-php-ext-install pdo pdo_mysql
 
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+COPY ./html /var/www/html
 
-RUN sed -i 's/80/8000/g' /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf
-
-RUN docker-php-ext-install pdo_pgsql
-
-WORKDIR /var/www/html
-
-COPY . .
-
-RUN chown -R www-data:www-data .
+RUN chown -R www-data:www-data /var/www/html
 
 EXPOSE 8000
