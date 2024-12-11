@@ -19,7 +19,7 @@ class Incident
     private ?string $type = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $state = null;
+    private ?string $status = null;
 
     /**
      * @var Collection<int, Player>
@@ -49,14 +49,14 @@ class Incident
         return $this;
     }
 
-    public function getState(): ?string
+    public function getStatus(): ?string
     {
-        return $this->state;
+        return $this->status;
     }
 
-    public function setState(string $state): static
+    public function setStatus(string $status): static
     {
-        $this->state = $state;
+        $this->status = $status;
 
         return $this;
     }

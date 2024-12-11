@@ -30,6 +30,9 @@ class Player
     #[ORM\ManyToOne(inversedBy: 'players')]
     private ?Team $team = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $position = null;
+
     public function __construct()
     {
         $this->situation = new ArrayCollection();
@@ -96,6 +99,18 @@ class Player
     public function setTeam(?Team $team): static
     {
         $this->team = $team;
+
+        return $this;
+    }
+
+    public function getPosition(): ?string
+    {
+        return $this->position;
+    }
+
+    public function setPosition(string $position): static
+    {
+        $this->position = $position;
 
         return $this;
     }
