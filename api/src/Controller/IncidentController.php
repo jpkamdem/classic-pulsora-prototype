@@ -29,7 +29,7 @@ class IncidentController extends AbstractController
 
         return new JsonResponse($data, JsonResponse::HTTP_OK);
     }
-    #[Route('api/incident/{id}', name: 'api_get_one_incident', methods: ['GET'])]
+    #[Route('/api/incident/{id}', name: 'api_get_one_incident', methods: ['GET'])]
     public function getOneIncident(int $id, IncidentRepository $incidentRepository): JsonResponse
     {
         $incident = $incidentRepository->find($id);

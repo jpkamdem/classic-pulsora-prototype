@@ -32,7 +32,7 @@ class PlayerController extends AbstractController
 
         return new JsonResponse($data, JsonResponse::HTTP_OK);
     }
-    #[Route('api/player/{id}', name: 'api_get_one_player', methods: ['GET'])]
+    #[Route('/api/player/{id}', name: 'api_get_one_player', methods: ['GET'])]
     public function getOnePlayer(PlayerRepository $playerRepository, int $id): JsonResponse
     {
         $player = $playerRepository->find($id);
@@ -52,7 +52,7 @@ class PlayerController extends AbstractController
 
         return new JsonResponse($data, JsonResponse::HTTP_OK);
     }
-    #[Route('api/player', name: 'api_post_player', methods: ['POST'])]
+    #[Route('/api/player', name: 'api_post_player', methods: ['POST'])]
     public function createPlayer(Request $request, EntityManagerInterface $entityManagerInterface): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
@@ -74,7 +74,7 @@ class PlayerController extends AbstractController
 
         return new JsonResponse(['status' => 'Joueur créé'], JsonResponse::HTTP_CREATED);
     }
-    #[Route('api/player/{id]', name: 'api_put_player', methods: ['PUT'])]
+    #[Route('/api/player/{id]', name: 'api_put_player', methods: ['PUT'])]
     public function updatePlayer(int $id, EntityManagerInterface $entityManagerInterface, PlayerRepository $playerRepository, Request $request): JsonResponse
     {
         $player = $playerRepository->find($id);
@@ -94,7 +94,7 @@ class PlayerController extends AbstractController
 
         return new JsonResponse(['status' => 'Joueur modifié'], JsonResponse::HTTP_OK);
     }
-    #[Route('api/player/{id]', name: 'api_delete_one_player', methods: ['DELETE'])]
+    #[Route('/api/player/{id]', name: 'api_delete_one_player', methods: ['DELETE'])]
     public function deleteOnePlayer(int $id, EntityManagerInterface $entityManagerInterface, PlayerRepository $playerRepository): JsonResponse
     {
         $player = $playerRepository->find($id);
@@ -120,7 +120,7 @@ class PlayerController extends AbstractController
 
         return new JsonResponse(['status' => 'Joueurs supprimés'], JsonResponse::HTTP_OK);
     }
-    #[Route('api/player/{id}/situation/{situationId}', name: 'api_add_situation_to_player', methods: ['POST'])]
+    #[Route('/api/player/{id}/situation/{situationId}', name: 'api_add_situation_to_player', methods: ['POST'])]
     public function addSituationToPlayer(int $incidentId, int $playerId, EntityManagerInterface $entityManagerInterface, PlayerRepository $playerRepository, IncidentRepository $incidentRepository)
     {
         $player = $playerRepository->find($playerId);
@@ -140,7 +140,7 @@ class PlayerController extends AbstractController
 
         return new JsonResponse(['status' => 'Situation ajoutée au joueur'], JsonResponse::HTTP_OK);
     }
-    #[Route('api/player/{id}/situation/{situationId}', name: 'api_remove_situation_from_player', methods: ['DELETE'])]
+    #[Route('/api/player/{id}/situation/{situationId}', name: 'api_remove_situation_from_player', methods: ['DELETE'])]
     public function removeSituationFromPlayer(int $incidentId, int $playerId, EntityManagerInterface $entityManagerInterface, PlayerRepository $playerRepository, IncidentRepository $incidentRepository)
     {
         $player = $playerRepository->find($playerId);

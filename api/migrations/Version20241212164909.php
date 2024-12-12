@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20241211132306 extends AbstractMigration
+final class Version20241212164909 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -26,7 +26,7 @@ final class Version20241211132306 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_232B318C8D8189CA ON game (team_one_id)');
         $this->addSql('CREATE INDEX IDX_232B318CE6DD6E05 ON game (team_two_id)');
         $this->addSql('CREATE TABLE incident (id SERIAL NOT NULL, type VARCHAR(255) NOT NULL, status VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
-        $this->addSql('CREATE TABLE player (id SERIAL NOT NULL, team_id INT DEFAULT NULL, firstname VARCHAR(255) NOT NULL, lastname VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE player (id SERIAL NOT NULL, team_id INT DEFAULT NULL, firstname VARCHAR(255) NOT NULL, lastname VARCHAR(255) NOT NULL, position VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_98197A65296CD8AE ON player (team_id)');
         $this->addSql('CREATE TABLE player_incident (player_id INT NOT NULL, incident_id INT NOT NULL, PRIMARY KEY(player_id, incident_id))');
         $this->addSql('CREATE INDEX IDX_3BD4E0FA99E6F5DF ON player_incident (player_id)');

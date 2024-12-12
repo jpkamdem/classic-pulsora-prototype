@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class TeamController extends AbstractController
 {
-    #[Route('api/team', name: 'api_get_all_teams', methods: ['GET'])]
+    #[Route('/api/team', name: 'api_get_all_teams', methods: ['GET'])]
     public function getAllTeams(TeamRepository $teamRepository): JsonResponse
     {
         $teams = $teamRepository->findAll();

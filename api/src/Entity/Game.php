@@ -4,10 +4,16 @@ namespace App\Entity;
 
 use App\Repository\GameRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: GameRepository::class)]
 class Game
 {
+    #[Assert\Expression(
+        "this.getTeamOne() != this.getTeamTwo()",
+        message: "Les deux équipes doivent être différentes."
+    )]
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -39,6 +45,9 @@ class Game
 
     public function setTeamOne(?Team $teamOne): static
     {
+        if ($teamOne === $this->teamTwo) {
+            throw new \InvalidArgumentException('Les deux équipes doivent être différentes.');
+        }
         $this->teamOne = $teamOne;
 
         return $this;
@@ -51,6 +60,9 @@ class Game
 
     public function setTeamTwo(?Team $teamTwo): static
     {
+        if ($teamTwo === $this->teamOne) {
+            throw new \InvalidArgumentException('Les deux équipes doivent être différentes.');
+        }
         $this->teamTwo = $teamTwo;
 
         return $this;
@@ -78,5 +90,19 @@ class Game
         $this->scoreTwo = $scoreTwo;
 
         return $this;
+    }
+
+    public function areTeamsValid(): bool
+    {
+        return $this->teamOne !== null && $this->teamTwo !== null && $this->teamOne !== $this->teamTwo;
+    }
+    public function playGame(): void
+    {
+        if (!$this->areTeamsValid()) {
+            throw new \LogicException('Les deux équipes doivent être valides.');
+        }
+
+        $this->scoreOne = rand(0, 5);
+        $this->scoreTwo = rand(0, 5);
     }
 }

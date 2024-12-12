@@ -28,6 +28,7 @@ class Player
     private Collection $situation;
 
     #[ORM\ManyToOne(inversedBy: 'players')]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Team $team = null;
 
     #[ORM\Column(length: 255)]
