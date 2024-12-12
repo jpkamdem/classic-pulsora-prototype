@@ -2,15 +2,13 @@ FROM node:23 AS build
 
 WORKDIR /app
 
-COPY package.json .
+COPY package*.json .
 
-COPY yarn.lock .
-
-RUN yarn
+RUN npm i
 
 COPY . .
 
-RUN yarn build
+RUN npm run build
 
 FROM nginx:1.27.2
 
