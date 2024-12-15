@@ -36,6 +36,8 @@ services:
       start_period: 30s
     depends_on:
       - db
+    networks:
+      - app-network
   web:
     container_name: web
     build:
@@ -51,6 +53,8 @@ services:
       start_period: 30s
     depends_on:
       - db
+    networks:
+      - app-network
 volumes:
   db_data:
 networks:

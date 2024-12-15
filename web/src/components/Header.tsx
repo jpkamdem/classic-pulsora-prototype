@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
+import menu from "../assets/menu.png";
+import pulsoraLogo from "../assets/pulsora-logo.png";
+import pulsoraOne from "../assets/pulsora-1.png";
+import userIcon from "../assets/user.png";
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -28,15 +33,11 @@ export default function Header() {
       <header className="bg-white shadow-md border-b border-gray-200 lg:hidden">
         <div className="container mx-auto flex items-center justify-between py-4 px-6">
           <div>
-            <img
-              src="src/assets/pulsoralogo.png"
-              alt="Logo Pulsora"
-              className="w-10 h-11"
-            />
+            <img src={pulsoraLogo} alt="Logo Pulsora" className="w-10 h-11" />
           </div>
 
           <button onClick={toggleMenu}>
-            <img src="src/assets/menu.png" alt="Menu" className="w-8 h-7" />
+            <img src={menu} alt="Menu" className="w-8 h-7" />
           </button>
         </div>
       </header>
@@ -44,11 +45,7 @@ export default function Header() {
       <header className="hidden lg:flex bg-white shadow-md border-b border-gray-200">
         <div className="container mx-auto flex items-center justify-between">
           <ul>
-            <img
-              src="src/assets/pulsora-1.png"
-              alt="Logo Pulsora"
-              className="w-10 h-11"
-            />
+            <img src={pulsoraOne} alt="Logo Pulsora" className="w-10 h-11" />
           </ul>
 
           <ul>
@@ -101,11 +98,7 @@ export default function Header() {
               to="/compte"
               className="text-couleurprincipale font-bold text-xl tracking-wide px-4 py-2 rounded"
             >
-              <img
-                src="src/assets/user.png"
-                alt="Logo User"
-                className="w-8 h8"
-              />
+              <img src={userIcon} alt="Logo User" className="w-8 h8" />
             </Link>
           </ul>
         </div>

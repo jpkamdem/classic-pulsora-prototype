@@ -1,12 +1,12 @@
+import stadiumOne from "../assets/stadium-1.png";
+import playerHome from "../assets/playerhome.png";
+import rightArrow from "../assets/right-arrow.png";
+
 export default function Home() {
   return (
     <>
       <div className="flex justify-center lg:items-center relative py-10">
-        <img
-          className="w-3/6 md:w-2/6"
-          src="src/assets/playerhome.png"
-          alt="Player Home"
-        />
+        <img className="w-3/6 md:w-2/6" src={playerHome} alt="Player Home" />
         <div className="text-center absolute bottom-0 lg:relative">
           <h1 className="text-4xl font-bold lg:text-8xl ">PULSORA</h1>
           <h2 className="text-3xl font-semibold lg:text-7xl text-blue-900">
@@ -38,15 +38,11 @@ export default function Home() {
           <h2 className="text-2xl font-bold mt-4 lg:text-4xl lg:mt-8">
             ARTICLE
           </h2>
-          <img
-            className="w-1/3 mx-auto lg:w-1/2"
-            src="src/assets/stadium-1.png"
-            alt=""
-          />
+          <img className="w-1/3 mx-auto lg:w-1/2" src={stadiumOne} alt="" />
           <div className="w-16 h-16 bg-blue-800 rounded-full absolute right-2 bottom-2">
             <img
               className="w-1/2 mx-auto mt-4 -rotate-45 "
-              src="src/assets/right-arrow.png"
+              src={rightArrow}
               alt=""
             />
           </div>
@@ -55,15 +51,11 @@ export default function Home() {
         <div className="flex flex-col lg:w-1/3 lg:h-full gap-6">
           <div className="bg-teal-200 text-white p-0 rounded-3xl flex-1  relative ">
             <h2 className="text-2xl font-bold lg:text-4xl mt-4">SAISON</h2>
-            <img
-              className="w-1/3  mx-auto lg:w-1/2"
-              src="src/assets/stadium-1.png"
-              alt=""
-            />
+            <img className="w-1/3  mx-auto lg:w-1/2" src={stadiumOne} alt="" />
             <div className="w-16 h-16 bg-blue-800  rounded-full  absolute right-2  bottom-2">
               <img
                 className="w-1/2 mx-auto mt-4 -rotate-45 "
-                src="src/assets/right-arrow.png"
+                src={rightArrow}
                 alt=""
               />
             </div>
@@ -71,15 +63,11 @@ export default function Home() {
 
           <div className="bg-lime-700 text-white p-0 rounded-3xl flex-1 relative">
             <h2 className="text-2xl font-bold lg:text-4xl mt-4">EQUIPE</h2>
-            <img
-              className="w-1/3  mx-auto lg:w-1/2"
-              src="src/assets/stadium-1.png"
-              alt=""
-            />
+            <img className="w-1/3  mx-auto lg:w-1/2" src={stadiumOne} alt="" />
             <div className="w-16 h-16 bg-blue-800  rounded-full  absolute right-2  bottom-2">
               <img
                 className="w-1/2 mx-auto mt-4 -rotate-45 "
-                src="src/assets/right-arrow.png"
+                src={rightArrow}
                 alt=""
               />
             </div>
